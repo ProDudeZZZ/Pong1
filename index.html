@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pong Online — 2P</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <canvas id="game" width="900" height="600"></canvas>
+
+    <div class="hud">
+      <div class="scores"><span id="sl">0</span> : <span id="sr">0</span></div>
+      <div class="hint">W/S (Left) • ↑/↓ (Right) • P Pause • Tab Admin</div>
+      <div id="toast" class="toast"></div>
+    </div>
+  </div>
+
+  <!-- Admin modal -->
+  <div id="admin" class="admin hidden">
+    <div class="panel">
+      <div class="row">
+        <h2>Admin Panel</h2>
+        <button id="closeAdmin" class="ghost">✕</button>
+      </div>
+      <div id="adminAuthBlock">
+        <label>Enter Admin Code</label>
+        <input id="adminCode" type="password" placeholder="•••" />
+        <button id="adminAuthBtn">Unlock</button>
+      </div>
+
+      <div id="adminControls" class="hidden">
+        <div class="group">
+          <label>Broadcast Message</label>
+          <input id="broadcastMsg" type="text" placeholder="Type announcement..." />
+          <button id="broadcastBtn">Send</button>
+        </div>
+
+        <div class="group">
+          <label>Events</label>
+          <div class="chips">
+            <button data-ev="disco">Disco</button>
+            <button data-ev="invert">Invert Controls</button>
+            <button data-ev="slowmo">Slow Mo</button>
+            <button data-ev="fast">Fast Ball</button>
+            <button data-ev="clear" class="ghost">Clear</button>
+          </div>
+        </div>
+
+        <div class="group row">
+          <button id="pauseToggle">Pause/Resume</button>
+          <button id="resetScores" class="ghost">Reset Scores</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.PONG_WS_PORT = 8765; // change if needed
+  </script>
+  <script src="client.js"></script>
+</body>
+</html>
